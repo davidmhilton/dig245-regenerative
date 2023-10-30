@@ -38,17 +38,27 @@ function patternZero(x, y){
     const color = newColor();
     let height = window.innerHeight;
     let width = window.innerWidth;
+    let pixelHeight = Math.floor(height/cell_size);
+    let pixelWidth = Math.floor(height/cell_size);
+
     let n = (Math.floor(Math.random()*2))+1
     for (let i = -n; i<(n+1) ; i++){
         for(let j = -n; j< (n+1); j++){
             let new_x = Math.floor(x+(i*cell_size));
             let new_y = Math.floor(y+(j*cell_size));
-            if(new_x < 0 || new_y < 0 || new_x > width || new_y > height){
-                continue;
-            }
-            else{
+            // if(new_x < 0 || new_y < 0 || new_x > width || new_y > height){
+            //     continue;
+            // }
+            // else{
+            //     const square = document.elementFromPoint(new_x, new_y);
+            //     square.style.backgroundColor = color;
+            // }
+            try{
                 const square = document.elementFromPoint(new_x, new_y);
                 square.style.backgroundColor = color;
+            }
+            catch{
+                continue;
             }
         }
     }
